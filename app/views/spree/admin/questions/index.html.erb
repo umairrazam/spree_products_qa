@@ -25,9 +25,9 @@
     <tbody>
       <% @collection.each do |question| %>
         <% css_class = cycle('odd', 'even') %>
-        <tr id="<%= spree_dom_id question %>" data-hook="admin_product_questions_index_rows" class="<%= css_class %>">
+        <tr class="<%= css_class %>">
           <td colspan="2"><%= question.try(:content) %></td>
-          <td class="actions" data-hook="admin_product_questions_index_row_actions" rowspan="2">
+          <td class="actions" data-hook="admin_product_questions_index_row_actions" rowspan="3">
             <%= link_to_edit question, no_text: true, class: 'edit' %>
             &nbsp;
             <%= link_to_delete question, no_text: true %>

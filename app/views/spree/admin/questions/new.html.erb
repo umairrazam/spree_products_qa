@@ -6,3 +6,10 @@
 
 <%= render partial: 'spree/admin/shared/product_sub_menu' %>
 <%= render partial: 'spree/admin/shared/product_tabs', locals: { current: t('qna_link') } %>
+
+<%= form_for [:admin, @product, @question], method: :post, html: { multipart: true } do |f| %>
+  <fieldset class="no-border-top">
+    <%= render partial: 'form', locals: { f: f } %>
+    <%= render partial: 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
+<% end %>
