@@ -9,4 +9,5 @@ en:
     content: 'Content'
     asked_by: 'Asked by'
     answered_by: 'Answered by'
-    is_visible: 'Visible in front?'
+    is_visible: 'Visible in front'
+    no_answer: "There's no answer yet"
