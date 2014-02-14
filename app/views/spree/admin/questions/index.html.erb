@@ -12,37 +12,39 @@
 <% if @collection.any? %>
   <table class="index" id="listing_questions">
     <colgroup>
-       <col style="width: 40%;">
-       <col style="width: 40%;">
-       <col style="width: 20%;">
+      <col style="width: 80%;"/>
+      <col style="width: 20%;"/>
     </colgroup>
     <thead>
       <tr data-hook="admin_product_questions_index_headers">
-        <th colspan="2"><%= t('questions_and_answers') %></th>
+        <th><%= t('questions_and_answers') %></th>
         <th data-hook="admin_product_questions_index_header_actions" class="actions"></th>
       </tr>
     </thead>
     <tbody>
       <% @collection.each do |question| %>
-        <% css_class = cycle('odd', 'even') %>
-        <tr class="<%= css_class %>">
-          <td colspan="2"><%= question.try(:content) %></td>
-          <td class="actions" data-hook="admin_product_questions_index_row_actions" rowspan="3">
+        <tr class="<%= cycle('odd', 'even') %>">
+          <td>
+            <p>
+              <strong><%= Spree::Question.model_name.human %>:</strong><br>
+              <%= question.try(:content) %>
+            </p>
+            <p>
+              <strong><%= Spree::Answer.model_name.human %>:</strong><br>
+              <%= question.answer.content rescue t('question.no_answer') %>
+            </p>
+            <small>
+              <% if question.user.present? %>
+                <%= t('question.asked_by') %> <%= link_to question.user.email, [:admin, question.user] if question.user.present? %>
+              <% end %>
+              <%= t('question.is_visible') %> - <%= question.is_visible %>
+            </small>
+          </td>
+          <td class="actions" data-hook="admin_product_questions_index_row_actions">
             <%= link_to_edit question, no_text: true, class: 'edit' %>
             &nbsp;
             <%= link_to_delete question, no_text: true %>
           </td>
-        </tr>
-        <tr class="<%= css_class %>">
-          <td colspan="2"><%= question.answer.content rescue t('question.no_answer') %></td>
-        </tr>
-        <tr class="<%= css_class %>">
-          <td class="align-center">
-            <% if question.user.present? %>
-              <%= t('question.asked_by') %> <%= link_to question.user.email, [:admin, question.user] if question.user.present? %>
-            <% end %>
-          </td>
-          <td class="align-center"><%= t('question.is_visible') %> - <%= question.is_visible %></td>
         </tr>
       <% end %>
     </tbody>

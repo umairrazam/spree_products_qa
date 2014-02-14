@@ -4,6 +4,7 @@ class Spree::Question < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :answer
 
+  default_scope ->{ order("created_at DESC") }
   scope :visible, ->{ where(is_visible: true) }
   scope :answered, ->{ joins(:answer) }
 
