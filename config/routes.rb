@@ -4,4 +4,6 @@ Spree::Core::Engine.routes.draw do
       resources :questions
     end
   end
+
+  resources :questions, only: [:create]
 end

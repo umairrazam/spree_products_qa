@@ -39,7 +39,7 @@
         <tr class="<%= css_class %>">
           <td class="align-center">
             <% if question.user.present? %>
-              <%= t('question.asked_by') %><%= link_to question.user.email, [:admin, question.user] if question.user.present? %>
+              <%= t('question.asked_by') %> <%= link_to question.user.email, [:admin, question.user] if question.user.present? %>
             <% end %>
           </td>
           <td class="align-center"><%= t('question.is_visible') %> - <%= question.is_visible %></td>
