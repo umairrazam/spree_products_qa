@@ -2,12 +2,11 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  qna_link: 'Questions & Answers'
+  questions_and_answers: 'Questions & Answers'
   new_question: 'New question'
   back_to_questions_list: 'Back to questions list'
   question:
     content: 'Content'
     asked_by: 'Asked by'
-    answered_by: 'Answered by'
     is_visible: 'Visible in front'
     no_answer: "There's no answer yet"

@@ -1,0 +1,11 @@
+<% if @product.questions.answered.visible.present? %>
+  <div class="row">
+    <h6 class="product-section-title"><%= t(:questions_and_answers) %></h6>
+    <% @product.questions.answered.visible.each_with_index do |question, index| %>
+      <div class="qna">
+        <div class="question"><%= "#{index+1}. #{question.content}" %></div>
+        <div class="answer"><%= question.answer.content %></div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

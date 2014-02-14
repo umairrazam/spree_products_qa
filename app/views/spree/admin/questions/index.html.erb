@@ -5,7 +5,7 @@
 <% end %>
 
 <%= render partial: 'spree/admin/shared/product_sub_menu' %>
-<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: t('qna_link') } %>
+<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: t('questions_and_answers') } %>
 
 <%= paginate @collection %>
 
@@ -18,7 +18,7 @@
     </colgroup>
     <thead>
       <tr data-hook="admin_product_questions_index_headers">
-        <th colspan="2"><%= "#{Spree::Question.model_name.human} & #{Spree::Answer.model_name.human}" %></th>
+        <th colspan="2"><%= t('questions_and_answers') %></th>
         <th data-hook="admin_product_questions_index_header_actions" class="actions"></th>
       </tr>
     </thead>

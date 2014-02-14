@@ -5,6 +5,7 @@ class Spree::Question < ActiveRecord::Base
   accepts_nested_attributes_for :answer
 
   scope :visible, ->{ where(is_visible: true) }
+  scope :answered, ->{ joins(:answer) }
 
   validates :content, presence: true
 
