@@ -34,6 +34,8 @@ require 'spree_products_qa/factories'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  config.include Devise::TestHelpers, :type => :controller
+  config.include Spree::TestingSupport::ControllerRequests, type: :controller
 
   # == URL Helpers
   #
