@@ -13,13 +13,19 @@ Install this extenstion than edit any product.
 While editing product, there's now new section in submenu - Questions and Answers.
 In this panel you can add or answer any question. Simple enough? :)
 
+Demo
+----
+If you want to see how it works, visit [our demo shop](https://fashion-shop.herokuapp.com/products/apache-baseball-jersey).
+
+You can login using those credentials `customer@example.com` / `customer`
+
 Installation
 ------------
 
 Add spree_products_qa to your Gemfile:
 
 ```ruby
-gem 'spree_products_qa', git: 'https://github.com/netguru/spree_products_qa/', branch: '2-1-stable'
+gem 'spree_products_qa', git: 'https://github.com/netguru/spree_products_qa.git', branch: '2-1-stable'
 ```
 
 Bundle your dependencies and run the installation generator:
