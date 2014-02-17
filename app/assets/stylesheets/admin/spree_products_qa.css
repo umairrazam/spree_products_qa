@@ -1,3 +1,6 @@
 /*
  *= require admin/spree_backend
 */
+.no_answer {
+  color: #FF0000;
+}

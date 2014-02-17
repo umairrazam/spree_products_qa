@@ -31,7 +31,11 @@
             </p>
             <p>
               <strong><%= Spree::Answer.model_name.human %>:</strong><br>
-              <%= question.answer.content rescue t('question.no_answer') %>
+              <% if question.answer.present? %>
+                <%= question.answer.content %>
+              <% else %>
+                <span class="no_answer"><%= t('question.no_answer') %></span>
+              <% end %>
             </p>
             <small>
               <% if question.user.present? %>
