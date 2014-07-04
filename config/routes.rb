@@ -2,8 +2,11 @@ Spree::Core::Engine.routes.draw do
   namespace :admin do
     resources :products do
       resources :questions
+    end
+
+    resources :questions, only: [] do
       collection do
-        get :pending_questions
+        get :pending
       end
     end
   end
