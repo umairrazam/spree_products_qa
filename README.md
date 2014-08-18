@@ -27,7 +27,7 @@ Installation
 Add spree_products_qa to your Gemfile:
 
 ```ruby
-gem 'spree_products_qa', git: 'https://github.com/netguru/spree_products_qa.git', branch: '2-1-stable'
+gem 'spree_products_qa', git: 'https://github.com/netguru/spree_products_qa.git', branch: '2-2-stable'
 ```
 
 Bundle your dependencies and run the installation generator:
@@ -39,7 +39,7 @@ bundle exec rails g spree_products_qa:install
 
 Additional info
 ---------------
-Currently supported Spree version: 2.1.X
+Currently supported Spree version: 2.1.X, 2.2.X
 
 Testing
 -------
