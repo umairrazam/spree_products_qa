@@ -16,3 +16,6 @@ en:
     is_visible: 'Visible in front'
     no_answer: "There's no answer yet"
     sent: 'Question sent, we will answer it soon!'
+  answer_email:
+    subject: 'Your question has been answered'
+    your_question: 'Your question:'
