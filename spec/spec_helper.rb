@@ -1,6 +1,12 @@
 # Run Coverage report
+require 'simplecov'
 require 'coveralls'
-Coveralls.wear!('rails')
+# Coveralls.wear!('rails')
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
+SimpleCov.start
 
 # Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
@@ -14,6 +20,9 @@ require 'ffaker'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
+
+# Allows Sidekiq to be configured for testing
+require 'sidekiq/testing'
 
 # Requires factories defined in spree_core
 require 'spree/testing_support/factories'
@@ -62,9 +71,20 @@ RSpec.configure do |config|
   end
 
   # Before each spec check if it is a Javascript test and switch between using database transactions or not where necessary.
-  config.before :each do
+  config.before :each do |example|
     DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
+
+    Sidekiq::Worker.clear_all
+    if example.metadata[:sidekiq] == :fake
+      Sidekiq::Testing.fake!
+    elsif example.metadata[:sidekiq] == :inline
+      Sidekiq::Testing.inline!
+    elsif example.metadata[:type] == :acceptance
+      Sidekiq::Testing.inline!
+    else
+      Sidekiq::Testing.fake!
+    end
   end
 
   # After each spec clean the database.
