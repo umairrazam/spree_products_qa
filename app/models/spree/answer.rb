@@ -3,7 +3,7 @@ class Spree::Answer < ActiveRecord::Base
 
   validates :content, presence: true
 
-  after_create :send_email, if: ->() { Redis.current.connected? }
+  after_create :send_email, if: ->() { defined?(Redis) && Redis.current.connected? }
 
   def send_email
     QaMailerWorker.perform_async(self.question.id) if self.question.present?
