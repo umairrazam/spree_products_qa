@@ -1,12 +1,6 @@
 # Run Coverage report
-require 'simplecov'
 require 'coveralls'
-# Coveralls.wear!('rails')
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
-]
-SimpleCov.start
+Coveralls.wear!('rails')
 
 # Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
