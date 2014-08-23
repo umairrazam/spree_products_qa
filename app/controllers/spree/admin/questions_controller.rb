@@ -6,6 +6,10 @@ module Spree
       def index
         @collection = @collection.page params[:page]
       end
+
+      def pending
+        @collection = Spree::Question.not_answered.joins(:product).map(&:product)
+      end
     end
   end
 end
