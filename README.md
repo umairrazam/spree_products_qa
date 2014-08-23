@@ -9,7 +9,7 @@ All answered (and accepted) questions are displayed on a product page.
 
 How does it work?
 -------------
-Install this extention and edit any product.
+Install this extension and edit any product.
 While editing product, there's now a new section in the submenu - Questions and Answers.
 In this panel you can add or answer any question. Simple enough? :)
 
