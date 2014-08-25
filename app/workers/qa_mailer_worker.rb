@@ -5,6 +5,8 @@ class QaMailerWorker
 
   def perform(question_id)
     question = Spree::Question.find(question_id)
-    QaAnswerMailer.answer_email(question).deliver
+    if question.user.present?
+      QaAnswerMailer.answer_email(question).deliver
+    end
   end
 end

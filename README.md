@@ -9,7 +9,7 @@ All answered (and accepted) questions are displayed on a product page.
 
 How does it work?
 -------------
-Install this extenstion and edit any product.
+Install this extension and edit any product.
 While editing product, there's now a new section in the submenu - Questions and Answers.
 In this panel you can add or answer any question. Simple enough? :)
 
@@ -27,7 +27,7 @@ Installation
 Add spree_products_qa to your Gemfile:
 
 ```ruby
-gem 'spree_products_qa', git: 'https://github.com/netguru/spree_products_qa.git', branch: '2-2-stable'
+gem 'spree_products_qa', git: 'https://github.com/netguru/spree_products_qa.git', branch: '2-3-stable'
 ```
 
 Bundle your dependencies and run the installation generator:
@@ -39,7 +39,7 @@ bundle exec rails g spree_products_qa:install
 
 Additional info
 ---------------
-Currently supported Spree version: 2.1.X, 2.2.X
+Currently supported Spree version: 2.1.X, 2.2.X, 2.3.X
 
 Testing
 -------
