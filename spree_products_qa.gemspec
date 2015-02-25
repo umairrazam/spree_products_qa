@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9.3'
 
   s.author    = 'Netguru'
-  s.email     = 'team@netguru.co'
+  s.email     = 'hi@netguru.co'
   s.homepage  = 'http://netguru.co'
 
   #s.files       = `git ls-files`.split("\n")
