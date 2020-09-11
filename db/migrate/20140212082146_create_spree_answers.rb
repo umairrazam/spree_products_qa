@@ -1,4 +1,4 @@
-class CreateSpreeAnswers < ActiveRecord::Migration
+class CreateSpreeAnswers < ActiveRecord::Migration[4.2]
   def change
     create_table :spree_answers do |t|
       t.integer :question_id

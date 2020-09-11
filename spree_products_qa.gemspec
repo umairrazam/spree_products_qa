@@ -16,10 +16,15 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.3.0'
-  s.add_dependency 'spree_backend', '~> 2.3.0'
+  spree_version = '>= 2.3.0', '< 5.0'
+  s.add_dependency 'spree_core', spree_version
+  s.add_dependency 'spree_api', spree_version
+  s.add_dependency 'spree_backend', spree_version
+  s.add_dependency 'spree_extension'
+
   s.add_dependency 'sidekiq'
 
+  s.add_development_dependency 'spree_dev_tools'
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'database_cleaner'
