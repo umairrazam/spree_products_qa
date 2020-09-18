@@ -1,6 +1,6 @@
 <%= content_for :page_actions do %>
   <%= product_preview_link(@product) %>
-  <%= button_link_to t(:new_question), new_admin_product_question_url(@product), { class: "btn-success", icon: 'add.svg', id: 'admin_new_question' } %>
+  <%= button_link_to t(:new_question), new_admin_product_product_question_url(@product), { class: "btn-success", icon: 'add.svg', id: 'admin_new_question' } %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/product_tabs', locals: { current: t('questions_and_answers') } %>
@@ -11,10 +11,10 @@
       <thead>
       <tr data-hook="admin_product_questions_index_headers">
         <th>
-          <%= Spree::Question.model_name.human %>
+          <%= Spree::ProductQuestion.model_name.human %>
         </th>
         <th>
-          <%= Spree::Answer.model_name.human %>
+          <%= Spree::ProductAnswer.model_name.human %>
         </th>
         <th>
           <%= t('question.asked_by') %>
@@ -32,8 +32,8 @@
             <%= question.try(:content) %>
           </td>
           <td>
-            <% if question.answer.present? %>
-              <%= question.answer.content %>
+            <% if question.product_answer.present? %>
+              <%= question.product_answer.content %>
             <% else %>
               <span class="text-danger"><%= t('question.no_answer') %></span>
             <% end %>
@@ -61,7 +61,7 @@
 
 <% else %>
   <div class="alert alert-info no-objects-found">
-    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Question)) %>,
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::ProductQuestion)) %>,
     <%= link_to Spree.t(:add_one), new_object_url %>!
   </div>
 <% end %>

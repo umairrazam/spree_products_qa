@@ -1,15 +1,15 @@
 Spree::Core::Engine.routes.draw do
   namespace :admin do
     resources :products do
-      resources :questions
+      resources :product_questions, path: :questions
     end
 
-    resources :questions, only: [] do
+    resources :product_questions, only: [] do
       collection do
         get :pending
       end
     end
   end
 
-  resources :questions, only: [:create]
+  resources :product_questions, only: [:create]
 end
