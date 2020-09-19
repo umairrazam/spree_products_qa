@@ -12,4 +12,13 @@ Spree::Core::Engine.routes.draw do
   end
 
   resources :product_questions, only: [:create]
+
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v2 do
+      namespace :storefront do
+        resources :product_questions
+        resources :product_answers
+      end
+    end
+  end
 end
