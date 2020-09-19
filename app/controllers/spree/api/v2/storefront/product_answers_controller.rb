@@ -11,7 +11,7 @@ module Spree
           private
 
           def scope
-            Spree::Answer
+            Spree::ProductAnswer
           end
 
           def resource
@@ -19,7 +19,7 @@ module Spree
           end
 
           def resource_serializer
-            Spree::V2::Storefront::AnswerSerializer
+            Spree::V2::Storefront::ProductAnswerSerializer
           end
 
         end
