@@ -7,7 +7,7 @@ module Spree
         attributes :content
 
         has_one :user
-        has_one :product
+        has_one :product_question
       end
     end
   end
