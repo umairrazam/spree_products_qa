@@ -4,7 +4,7 @@ module Spree
       module Storefront
         class ProductQuestionsController < ::Spree::Api::V2::BaseController
           include Spree::Api::V2::CollectionOptionsHelpers
-          before_action :load_product, only: [:index]
+          before_action :load_product, only: [:index, :create]
           
           def index
             render_serialized_payload {serialize_collection(paginated_collection)}
@@ -14,7 +14,19 @@ module Spree
             render_serialized_payload { serialize_resource(resource) }
           end
 
+          def create
+            @product_question = Spree::ProductQuestion.new(product_question_params)
+            @product_question.product = @product
+            @product_question.user = spree_current_user if spree_user_signed_in?
+
+            render_result(@product_question)
+          end
+
           private
+
+          def create_service
+            Spree::Api::Dependencies.storefront_account_create_address_service.constantize
+          end
 
           def scope
             Spree::ProductQuestion
@@ -42,6 +54,23 @@ module Spree
 
           def load_product
             @product = Spree::Product.friendly.find(params[:product_id])
+          end
+
+          def permitted_product_question_attributes
+            [:content, :visible]
+          end
+
+          def product_question_params
+            params.require(:product_question).permit(permitted_product_question_attributes)
+          end
+
+          def render_result(product_question)
+            if product_question.save
+              render_serialized_payload {serialize_resource(product_question)}
+            else
+              # TODO handle error from service
+              render_error_payload(product_question.errors)
+            end
           end
         end
       end
