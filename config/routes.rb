@@ -17,7 +17,6 @@ Spree::Core::Engine.routes.draw do
     namespace :v2 do
       namespace :storefront do
         resources :product_questions, only: [:index]
-        resources :product_answers
       end
     end
   end
