@@ -16,7 +16,9 @@ Spree::Core::Engine.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     namespace :v2 do
       namespace :storefront do
-        resources :product_questions, only: [:index, :create]
+        resources :products, only: [] do
+          resources :product_questions, only: [:index, :create]
+        end
       end
     end
   end

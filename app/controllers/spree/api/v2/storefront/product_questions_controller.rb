@@ -5,10 +5,10 @@ module Spree
         class ProductQuestionsController < ::Spree::Api::V2::BaseController
           include Spree::Api::V2::CollectionOptionsHelpers
           before_action :load_product, only: [:index, :create]
-          
+
           def index
             render_serialized_payload {serialize_collection(paginated_collection)}
-          end  
+          end
 
           def show
             render_serialized_payload { serialize_resource(resource) }
