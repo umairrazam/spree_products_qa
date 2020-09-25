@@ -19,6 +19,9 @@ Spree::Core::Engine.routes.draw do
         resources :products, only: [] do
           resources :product_questions, only: [:index, :create]
         end
+        resources :users, only: [] do
+          resources :product_qas, only: [:index]
+        end
       end
     end
   end
