@@ -2,7 +2,7 @@ module Spree
   module Api
     module V2
       module Storefront
-        class ProductQasController < ::Spree::Api::V2::BaseController
+        class UserProductQuestionsController < ::Spree::Api::V2::BaseController
           include Spree::Api::V2::CollectionOptionsHelpers
           before_action :load_user, only: [:index]
 
