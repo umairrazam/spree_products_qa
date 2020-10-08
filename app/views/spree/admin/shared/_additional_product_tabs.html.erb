@@ -1,7 +1,7 @@
 <%= content_tag :li do %>
   <%= link_to_with_icon 'list.svg',
       t(:questions_and_answers),
-      admin_product_questions_path(@product),
+      admin_product_product_questions_path(@product),
       class: "nav-link #{'active' if current == t(:questions_and_answers)}"
   %>
 <% end %>
