@@ -25,6 +25,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'sidekiq'
 
   s.add_development_dependency 'spree_dev_tools'
+  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'rubocop-rails'
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'database_cleaner'
