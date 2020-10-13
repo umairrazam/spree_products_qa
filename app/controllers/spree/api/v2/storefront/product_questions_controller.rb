@@ -7,7 +7,7 @@ module Spree
           before_action :load_product, only: [:index, :create]
 
           def index
-            render_serialized_payload {serialize_collection(paginated_collection)}
+            render_serialized_payload { serialize_collection(paginated_collection) }
           end
 
           def show
@@ -49,11 +49,14 @@ module Spree
           end
 
           def collection
-            Spree::ProductQuestion.visible.where(product: @product)
+            return Spree::ProductQuestion.visible.where(product: @product) if @product
+
+            # for security reason only return current user's product questions
+            Spree::ProductQuestion.where(user_id: spree_current_user) if params[:user_id]
           end
 
           def load_product
-            @product = Spree::Product.friendly.find(params[:product_id])
+            @product = Spree::Product.friendly.where(id: params[:product_id]).first
           end
 
           def permitted_product_question_attributes
@@ -66,7 +69,7 @@ module Spree
 
           def render_result(product_question)
             if product_question.save
-              render_serialized_payload {serialize_resource(product_question)}
+              render_serialized_payload { serialize_resource(product_question) }
             else
               # TODO handle error from service
               render_error_payload(product_question.errors)
