@@ -6,7 +6,7 @@ module Spree
           class ProductQuestionsAnswersController < ::Spree::Api::V2::BaseController
             before_action :require_spree_current_user
 
-            # GET /api/v2/storefront/account/reviews
+            # GET /api/v2/storefront/account/product_questions_answers
             def index
               render_serialized_payload { serialize_collection(resource) }
             end
