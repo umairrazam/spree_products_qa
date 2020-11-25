@@ -19,6 +19,10 @@ Spree::Core::Engine.routes.draw do
         resources :products, only: [] do
           resources :product_questions, only: [:index, :create]
         end
+
+        namespace :account do
+          resources :product_questions_answers, controller: :product_questions_answers, only: %i[index]
+        end
       end
     end
   end

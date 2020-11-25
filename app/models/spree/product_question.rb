@@ -6,10 +6,11 @@ class Spree::ProductQuestion < ActiveRecord::Base
 
   accepts_nested_attributes_for :product_answer
 
-  default_scope -> {order("spree_product_questions.created_at DESC")}
-  scope :visible, -> {where(is_visible: true)}
-  scope :answered, -> {joins(:product_answer)}
-  scope :not_answered, -> {where.not(id: self.answered.pluck(:id))}
+  default_scope -> { order('spree_product_questions.created_at DESC') }
+  scope :visible, -> { where(is_visible: true) }
+  scope :answered, -> { joins(:product_answer) }
+  scope :not_answered, -> { where.not(id: self.answered.pluck(:id)) }
+  scope :user_product_questions, ->(user_id) { where('spree_product_questions.user_id = ?', user_id) }
 
   validates :content, presence: true
 
