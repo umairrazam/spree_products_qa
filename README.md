@@ -25,7 +25,7 @@ Installation
 Add spree_products_qa to your Gemfile:
 
 ```ruby
-gem 'spree_products_qa', git: 'https://github.com/TruemarkDev//spree_products_qa.git', branch: 'v2020'
+gem 'spree_products_qa', git: 'https://github.com/TruemarkDev/spree_products_qa.git', branch: 'master'
 ```
 
 Bundle your dependencies and run the installation generator:
