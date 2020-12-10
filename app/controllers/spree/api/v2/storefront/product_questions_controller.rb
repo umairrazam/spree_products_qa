@@ -5,6 +5,7 @@ module Spree
         class ProductQuestionsController < ::Spree::Api::V2::BaseController
           include Spree::Api::V2::CollectionOptionsHelpers
           before_action :load_product, only: [:index, :create]
+          before_action :load_product_question, only: [:update]
 
           def index
             render_serialized_payload {serialize_collection(paginated_collection)}
@@ -20,6 +21,14 @@ module Spree
             @product_question.user = spree_current_user if spree_user_signed_in?
 
             render_result(@product_question)
+          end
+
+          def update
+            if @product_question.update(product_question_params)
+              render_serialized_payload {serialize_resource(@product_question)}
+            else
+              render_error_payload(product_question.errors)
+            end
           end
 
           private
@@ -54,6 +63,10 @@ module Spree
 
           def load_product
             @product = Spree::Product.friendly.find(params[:product_id])
+          end
+
+          def load_product_question
+            @product_question = Spree::ProductQuestion.find(params[:id])
           end
 
           def permitted_product_question_attributes
