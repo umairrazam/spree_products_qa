@@ -34,6 +34,34 @@ Bundle your dependencies and run the installation generator:
 bundle
 bundle exec rails g spree_products_qa:install
 ```
+---------------
+## API Endpoints
+
+### Product Questions V2
+
+- GET `/api/v2/storefront/products/:product_id/product_questions` - returns list of questions for a product
+
+- POST `/api/v2/storefront/products/:product_id/product_questions` - creates new question for a product
+
+    payload:
+    ```json
+    {
+      "content": "How long will the product take to arrive?",
+      "is_visible": true
+    }
+    ```
+- PATCH `/api/v2/storefront/products/:product_id/product_questions/:id` - Update question for product
+
+    payload:
+    ```json
+    {
+      "content": "How long will the product take to arrive?",
+      "is_visible": true
+    }
+    ```
+- DELETE `/api/v2/storefront/products/:product_id/product_questions/:id`
+
+---------------
 
 Additional info
 ---------------
