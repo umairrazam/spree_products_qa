@@ -3,7 +3,7 @@ module Spree
     module V2
       module Storefront
         module Account
-          class ProductQuestionsAnswersController < ::Spree::Api::V2::BaseController
+          class ProductQuestionsAnswersController < ::Spree::Api::V2::ResourceController
             before_action :require_spree_current_user
 
             # GET /api/v2/storefront/account/product_questions_answers
