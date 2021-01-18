@@ -2,7 +2,7 @@ module Spree
   module Api
     module V2
       module Storefront
-        class ProductQuestionsController < ::Spree::Api::V2::BaseController
+        class ProductQuestionsController < ::Spree::Api::V2::ResourceController
           include Spree::Api::V2::CollectionOptionsHelpers
           before_action :load_product, only: [:index, :create]
           before_action :load_product_question, only: [:update, :destroy]
