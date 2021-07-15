@@ -2,7 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  questions_and_answers: 'Questions & Answers'
+  questions_and_answers: 'Customer questions & answers'
   new_question: 'New question'
   back_to_questions_list: 'Back to questions list'
   ask_question: 'Ask a question'
@@ -10,7 +10,8 @@ en:
   products_with_pending_questions: 'Products with pending questions'
   no_pending_questions: "There's no pending questions"
   go_to_questions: "Go to questions"
-  q: 'Q'
+  q: 'Question'
+  answer: 'Answer'
   question:
     content: 'Content'
     asked_by: 'Asked by'

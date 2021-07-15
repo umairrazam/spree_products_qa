@@ -1,19 +1,35 @@
-<% if @product.product_questions.answered.visible.present? %>
-  <div class="row">
-    <h4 class="product-section-title w-100 font-weight-bold"><%= t(:questions_and_answers) %></h4>
-    <% @product.product_questions.answered.visible.each_with_index do |question, index| %>
-      <div class="qna w-100">
-        <div class="question"><span class="pr-2"><%=t(:q)%></span><%= "#{question.content}" %></div>
-        <div class="answer"><%= question.product_answer.content %></div>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-<% if spree_current_user.present? %>
-  <div class="row pt-2">
-    <h5 class="product-section-title w-100"><%= t(:do_you_have_any_questions) %></h5>
+<div class="col-lg-12">
+  <h4 class="pt-4 font-weight-bold text-uppercase product-details-subtitle"><%= t(:questions_and_answers) %></h4>
+</div>
+<div class="col-lg-4">
+  <% if spree_current_user.present? %>
+    <p class="product-section-title w-100 mb-1"><%= t(:do_you_have_any_questions) %></p>
     <div class='question_form'>
       <%= render 'question_form' %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
+<div class="col-lg-8">
+  <% if @product.product_questions.answered.visible.present? %>
+    <% @product.product_questions.answered.visible.each_with_index do |question, index| %>
+      <div class="qna w-100">
+        <div class="d-flex mb-3">
+          <div class="qna__question__title"><%=t(:q)%>:</div>
+          <div class="question"><%= "#{question.content}" %></div>
+        </div>
+        <div class="d-flex mb-3">
+          <div class="qna__answer__title"><%=t(:answer)%>:</div>
+          <div>
+            <div class="product-description">
+              <%= question.product_answer.content.truncate(310) %>
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fa fa-angle-down qna__see__more__icon" aria-hidden="true"></i>
+              <a href="#" class="qna__see__more">See more answers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

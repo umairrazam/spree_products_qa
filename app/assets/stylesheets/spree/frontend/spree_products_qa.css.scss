@@ -1,9 +1,29 @@
 .qna {
   .question {
-    font-weight: bold;
     color: #047267;
   }
   .answer {
     margin-bottom: 5px;
+  }
+  &__question__title{
+    margin-right: 30px;
+    font-weight: 700;
+  }
+  &__answer__title{
+    margin-right: 45px;
+    font-weight: 700;
+  }
+  &__see__more{
+    color: #047267;
+    font-size: 0.975rem;
+    margin-left: 5px;
+    &:hover{
+      color: #047267;
+      text-decoration: none;
+    }
+  }
+  &__see__more__icon{
+    color: #047267;
+    font-size: 20px !important;
   }
 }
