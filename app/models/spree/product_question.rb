@@ -14,6 +14,9 @@ class Spree::ProductQuestion < ActiveRecord::Base
 
   validates :content, presence: true
 
+  def update_product
+    product.touch
+  end  
   def answer_for_form
     self.product_answer.present? ? self.product_answer : self.build_product_answer
   end
