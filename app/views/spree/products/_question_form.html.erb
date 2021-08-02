@@ -3,7 +3,7 @@
   <%= f.field_container :content do %>
     <%#= f.label :content, raw(Spree::ProductQuestion.model_name.human + content_tag(:span, ' *', class: 'required')) %>
     <br>
-    <%= f.text_area :content, { rows: "4", cols: "35" } %>
+    <%= f.text_area :content, { rows: "4", cols: "35", placeholder: "Type your question" } %>
     <%= f.error_message_on :content %>
   <% end %>
   <br>
